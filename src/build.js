@@ -39,22 +39,24 @@ articles.sort((a, b) => a.date.join('') - b.date.join(''));
 articles[articles.length - 1].content = articles[articles.length - 1].content.replace("<div class=\"article\">", "<div class=\"article\" id=\"latest\">");
 
 // copy the folder src/site-skeleton to public
-function copyDir(src, dest) {
-    // delete the old public folder if it exists
-    if (fs.existsSync(dest)) {
-        fs.rmSync(dest, { recursive: true });
-    }
-    fs.mkdirSync(dest);
-    fs.readdirSync(src).forEach(file => {
-        let srcPath = path.join(src, file);
-        let destPath = path.join(dest, file);
-        if (fs.lstatSync(srcPath).isDirectory()) {
-            copyDir(srcPath, destPath);
-        } else {
-            fs.copyFileSync(srcPath, destPath);
-        }
-    });
-}
+// function copyDir(src, dest) {
+//     // delete the old public folder if it exists
+//     if (fs.existsSync(dest)) {
+//         fs.rmSync(dest, { recursive: true });
+//     }
+//     fs.mkdirSync(dest);
+//     fs.readdirSync(src).forEach(file => {
+//         let srcPath = path.join(src, file);
+//         let destPath = path.join(dest, file);
+//         if (fs.lstatSync(srcPath).isDirectory()) {
+//             copyDir(srcPath, destPath);
+//         } else {
+//             fs.copyFileSync(srcPath, destPath);
+//         }
+//     });
+// }
+fs.rmSync('public', { recursive: true });
+fs.mkdirSync('public');
 fs.copyFileSync('src/site-skeleton/index.html', 'public/index.html');
 copyDir('img', 'public/img');
 
