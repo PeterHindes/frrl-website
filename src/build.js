@@ -55,6 +55,8 @@ function copyDir(src, dest) {
         }
     });
 }
+
+// copy the site skeleton to public
 if (fs.existsSync('public')){
     fs.rmSync('public', { recursive: true });
 }
