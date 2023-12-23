@@ -1,0 +1,20 @@
+{
+  "name": "frrl-website",
+  "version": "1.0.0",
+  "description": "FRRl Website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node src/build.js",
+    "preview": "wrangler pages dev public",
+    "qpreview": "http-server ./public",
+    "dev": "watch 'npm run onedev' ./src",
+    "onedev": "npm run build && http-server ./public"
+  },
+  "author": "Peter Hindes",
+  "license": "not-licensed-view-only",
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "showdown": "^2.1.0",
+    "watch": "^1.0.2"
+  }
+}

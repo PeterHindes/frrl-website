@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Frontrange Robotics Limited</title>
+    <style>/*insert style*/</style>
+    <script>
+        window.onload = function () {
+            const sections = document.querySelectorAll('section');
+            const homepageSection = document.getElementById('homepage');
+
+            // Function to show or hide sections based on the URL hash
+            const showSection = () => {
+                const hash = window.location.hash.substring(1);
+
+                // Hide all sections except the homepage
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+                console.log(hash);
+                // Show the section based on the URL hash
+                if (hash && hash !== 'homepage') {
+                    const sectionToShow = document.getElementById(hash);
+                    console.log(sectionToShow);
+                    if (sectionToShow) {
+                        sectionToShow.style.display = 'block';
+                    } else {
+                        homepageSection.style.display = 'block';
+                    }
+                } else {
+                    homepageSection.style.display = 'block';
+                }
+            };
+
+            // Call the function when the page loads
+            showSection();
+
+            // Also call the function when the hash changes
+            window.onhashchange = showSection;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Frontrange Robotics Limited</h1>
+        <nav>
+            <ul>
+                <li><a href="#homepage">Homepage</a></li>
+                <li><a href="#about">About the Team/Biographies</a></li>
+                <li><a href="#community">Community Involvement</a></li>
+                <li><a href="#donors">Donors</a></li>
+                <li><a href="#location">Location/Contact Us</a></li>
+                <li><a href="#goals">Group Goals</a></li>
+                <li id="djln"><a href="#journal">Daily Journal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="homepage">
+    <h2>Welcome to our Homepage</h2>
+    <p>This is the homepage section. It is currently visible.</p>
+    </section>
+
+    <section id="about">
+    <h2>About the Team/Biographies</h2>
+    <p>This is the About section.</p>
+    </section>
+
+    <section id="community">
+    <h2>Community Involvement</h2>
+    <p>This is the Community Involvement section.</p>
+    </section>
+
+    <section id="donors">
+    <h2>Donors</h2>
+    <p>This is the Donors section.</p>
+    </section>
+
+    <section id="location">
+    <h2>Location/Contact Us</h2>
+    <p>This is the Location/Contact Us section.</p>
+    </section>
+
+    <section id="goals">
+    <h2>Group Goals</h2>
+    <p>This is the Group Goals section.</p>
+    </section>
+
+    <section id="journal">
+    <h2>Daily Journal</h2>
+    <p>This is the Daily Journal section.</p>
+    <!-- placeholder -->
+    </section>
+</body>
+
+</html>
