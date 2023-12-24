@@ -12,11 +12,16 @@
     </style>
     <script>
         window.onload = function () {
+            // if no hash set it to homepage
+            if (!window.location.hash) {
+                window.location.hash = 'homepage';
+            }
             const sections = document.querySelectorAll('section');
             const homepageSection = document.getElementById('homepage');
 
             // Function to show or hide sections based on the URL hash
             const showSection = () => {
+                console.log("Showing");
                 const hash = window.location.hash.substring(1);
 
                 // Hide all sections except the homepage
