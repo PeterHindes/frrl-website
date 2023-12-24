@@ -3,7 +3,13 @@
 
 <head>
     <title>Frontrange Robotics Limited</title>
-    <style>/*insert style*/</style>
+    <meta charset="utf-8">
+    <meta name="description" content="Frontrange Robotics Limited">
+    <meta name="keywords" content="Frontrange Robotics Limited">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*insert style*/
+    </style>
     <script>
         window.onload = function () {
             const sections = document.querySelectorAll('section');
@@ -17,11 +23,9 @@
                 sections.forEach(section => {
                     section.style.display = 'none';
                 });
-                console.log(hash);
                 // Show the section based on the URL hash
                 if (hash && hash !== 'homepage') {
                     const sectionToShow = document.getElementById(hash);
-                    console.log(sectionToShow);
                     if (sectionToShow) {
                         sectionToShow.style.display = 'block';
                     } else {
@@ -30,6 +34,19 @@
                 } else {
                     homepageSection.style.display = 'block';
                 }
+
+                // give the selected tab the class of active
+                const activeTab = document.querySelector(`a[href="#${hash}"]`).parentNode;
+                if (activeTab) {
+                    activeTab.classList.add('active');
+                }
+                // remove it from all the others
+                const tabs = document.querySelectorAll('nav li');
+                tabs.forEach(tab => {
+                    if (tab !== activeTab) {
+                        tab.classList.remove('active');
+                    }
+                });
             };
 
             // Call the function when the page loads
@@ -38,59 +55,100 @@
             // Also call the function when the hash changes
             window.onhashchange = showSection;
         }
+        // load the content of public/articles.html into the #journal section
+        fetch('articles.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('articles').innerHTML = data;
+            });
+    </script>
+    <script>
+        function toggleDropdown() {
+            var x = document.getElementById("dropdownMenu");
+            var logo = document.getElementById("logo");
+            if (x.style.display !== "block") {
+                x.style.display = "block";
+                logo.style.display = "none";
+            } else {
+                x.style.display = "none";
+                logo.style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        function toggleDropdown() {
+            var x = document.getElementById("dropdownMenu");
+            var logo = document.getElementById("logo");
+            var button = document.getElementById("dropdownButton");
+
+            if (x.style.display !== "block") {
+                x.style.display = "block";
+                logo.style.display = "none";
+                button.classList.add("change");
+            } else {
+                x.style.display = "none";
+                logo.style.display = "block";
+                button.classList.remove("change");
+            }
+        }
     </script>
 </head>
 
 <body>
     <header>
-        <img loading="lazy" id="logo" src="img/frrl.png" alt="Frontrange Robotics Limited">
-        <nav>
+        <img loading="lazy" id="logo" src="img/frrl.webp" alt="Frontrange Robotics Limited">
+        <nav id="dropdownMenu">
             <ul>
                 <li><a href="#homepage">Homepage</a></li>
-                <li><a href="#about">About the Team/Biographies</a></li>
+                <li><a href="#about">About The Team</a></li>
                 <li><a href="#community">Community Involvement</a></li>
                 <li><a href="#donors">Donors</a></li>
-                <li><a href="#location">Location/Contact Us</a></li>
-                <li><a href="#goals">Group Goals</a></li>
+                <li><a href="#location">About Us</a></li>
+                <li><a href="#goals">Future Goals</a></li>
                 <li id="djln"><a href="#journal">Daily Journal</a></li>
             </ul>
         </nav>
+        <button id="dropdownButton" onclick="toggleDropdown()" class="hamburger">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </button>
     </header>
 
     <section id="homepage">
-    <h2>Welcome to our Homepage</h2>
-    <p>This is the homepage section. It is currently visible.</p>
+        <h2>Welcome to our Homepage</h2>
+        <p>This is the homepage section. It is currently visible.</p>
     </section>
 
     <section id="about">
-    <h2>About the Team/Biographies</h2>
-    <p>This is the About section.</p>
+        <h2>About the Team/Biographies</h2>
+        <p>This is the About section.</p>
     </section>
 
     <section id="community">
-    <h2>Community Involvement</h2>
-    <p>This is the Community Involvement section.</p>
+        <h2>Community Involvement</h2>
+        <p>This is the Community Involvement section.</p>
     </section>
 
     <section id="donors">
-    <h2>Donors</h2>
-    <p>This is the Donors section.</p>
+        <h2>Donors</h2>
+        <p>This is the Donors section.</p>
     </section>
 
     <section id="location">
-    <h2>Location/Contact Us</h2>
-    <p>This is the Location/Contact Us section.</p>
+        <h2>Location/Contact Us</h2>
+        <p>This is the Location/Contact Us section.</p>
     </section>
 
     <section id="goals">
-    <h2>Group Goals</h2>
-    <p>This is the Group Goals section.</p>
+        <h2>Group Goals</h2>
+        <p>This is the Group Goals section.</p>
     </section>
 
     <section id="journal">
-    <h2>Daily Journal</h2>
-    <p>This is the Daily Journal section.</p>
-    <!-- placeholder -->
+        <h2>Daily Journal</h2>
+        <p>This is the Daily Journal section.</p>
+        <div id="articles"></div>
     </section>
 </body>
 

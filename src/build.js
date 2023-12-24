@@ -69,7 +69,9 @@ let indexHtml = fs.readFileSync('public/index.html', 'utf8');
 let articlesHtml = articles.map(article => article.content).join('\n');
 // remove newlines and extra spaces
 // indexHtml = indexHtml.replace(/\n/g, '').replace(/ +/g, ' ');
-indexHtml = indexHtml.replace('<!-- placeholder -->', articlesHtml);
+// indexHtml = indexHtml.replace('<!-- placeholder -->', articlesHtml);
+// instead save articlesHtml to a file
+fs.writeFileSync('public/articles.html', articlesHtml);
 indexHtml = indexHtml.replace('/*insert style*/', fs.readFileSync('src/site-skeleton/style.css', 'utf8'))
     // .replace(/\n/g, '').replace(/ +/g, ' ')
     ;
