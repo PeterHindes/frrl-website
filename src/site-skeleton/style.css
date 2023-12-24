@@ -1,23 +1,25 @@
 
 :root {
-    --dark-slate-gray: hsla(192, 28%, 33%, 1);
-    --prussian-blue: hsla(207, 50%, 16%, 1);
-    --midnight-green: hsla(194, 53%, 30%, 1);
-    --azure-web: hsla(190, 53%, 93%, 1);
-    --ash-gray: hsla(148, 11%, 70%, 1);
+    --c1: 22,54,93;
+    --c2: 49,109,163;
+    --c3: 168, 165, 163;
+    --c4: 253, 252, 252;
 }
-
+html {
+    height: 100%;
+}
 body {
-    background-color: var(--prussian-blue);
-    color: var(--azure-web);
+    background: rgb(22,54,93);
+    background: linear-gradient(315deg, rgb(var(--c1)) 0%, rgb(var(--c2)) 100%);
+    height: 100%;
+    color: rgb(var(--c4));
     font-family: Arial, sans-serif;
     margin: 0px;
     padding: 0px;
-
 }
 
 header {
-    background-color: var(--azure-web);
+    background-color: rgba(var(--c3), 0.2);
     padding: 20px;
     margin: 0px;
     width: calc(100% - 40px);
@@ -32,14 +34,22 @@ header {
 
     border-radius: 0px 0px 15px 15px;
     margin-bottom: 20px;
+
+    box-shadow: 0px 4px 4px rgba(var(--c1),0.1);
 }
 
 h1 {
-    color: var(--prussian-blue);
+    color: rgb(var(--c4));
+}
+img#logo {
+    height: 180px;
+    width: 180px;
+    margin-right: 20px;
+    color: rgb(var(--c4));
 }
 
 section h2 {
-    color: var(--prussian-blue);
+    color: rgb(var(--c4));
     margin: 0px;
 }
 
@@ -59,19 +69,22 @@ nav ul li {
     margin-right: 10px;
     margin-bottom: 10px;
     padding: 5px;
-    border: 1.5px solid var(--prussian-blue);
+    border: 1.5px solid rgb(var(--c1));
     border-radius: 7px;
-    background-color: var(--ash-gray);
+    background-color: rgba(var(--c1),0.8);
+    transition: all 0.2s ease;
 }
 #djln {
     background-color: #ff6411;
 }
 nav ul li:hover {
-    background-color: var(--midnight-green);
+    transform: translate(-2px, -2px);
+    background-color: rgba(var(--c2),0.4);
+    box-shadow: 6px 2px 4px rgb(var(--c1));
 }
 
 nav ul li a {
-    color: var(--prussian-blue);
+    color: rgb(var(--c4));
     text-decoration: none;
 }
 
@@ -79,9 +92,10 @@ nav ul li a {
 section {
     padding: 20px;
     margin-bottom: 20px;
-    background-color: var(--azure-web);
-    color: var(--prussian-blue);
+    background-color: rgba(var(--c3),0.3);
+    color: rgb(var(--c4));
     margin: 15px;
     border-radius: 15px;
-    min-height: 80%;
+    box-shadow: 0px 4px 4px rgba(var(--c1),0.2);
+    display: hidden;
 }
